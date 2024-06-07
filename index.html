@@ -6,15 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Todos</title>
   <style>
+    body {
+      position: relative;
+    }
+
     .footer {
       margin-top: auto;
       position: fixed;
       bottom: 0;
+
+      .loading-spinner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   </style>
 </head>
 
 <body>
+  <span className="loading loading-spinner loading-lg"></span>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

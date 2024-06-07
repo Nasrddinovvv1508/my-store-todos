@@ -1,9 +1,29 @@
+@import url(https://fonts.googleapis.com/css2?family=Livvic:wght@100;200;300;400;500;600;800;900&display=swap);
+
+body {
+  font-family: 'Livvic', sans-serif;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-    .site-container {
-        @apply max-w-7xl mx-auto w-full;
-    }
+  .site-container {
+    @apply max-w-7xl mx-auto w-full;
+  }
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: auto;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0;
+  /* width: 100%; */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

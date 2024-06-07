@@ -28,7 +28,7 @@ function Navbar() {
   }, [theme])
 
   return (
-    <div className="bg-base-200">
+    <div className="bg-base-200 mb-6">
       <div className="navbar site-container">
         <div className="navbar-start">
           <Link className="btn btn-secondary font-bold text-2xl" to="/">My Store</Link>

@@ -7,7 +7,7 @@ function useFetch(url) {
 
     useEffect(() => {
         let getData = async () => {
-            isPending(true);
+            setIsPending(true);
 
             try {
                 let request = await fetch(url);
@@ -18,11 +18,11 @@ function useFetch(url) {
 
                 let responce = await request.json();
                 setData(responce);
-                setIsPending(true);
+                setIsPending(false);
                 setError(null);
             } catch (error) {
                 console.log(error.message);
-                setIsPending(true);
+                setIsPending(false);
                 setError(error.message);
             }
         }
