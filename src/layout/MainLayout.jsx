@@ -6,7 +6,7 @@ function MainLayout() {
     return (
         <>
             <Navbar />
-            <main>
+            <main className="site-container grow">
                 <Outlet />
             </main>
             <Footer />

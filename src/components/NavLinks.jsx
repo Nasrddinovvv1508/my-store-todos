@@ -7,12 +7,12 @@ let links = [
         link: `/`,
     },
     {
-        id: 1,
+        id: 2,
         text: `About`,
         link: `/about`,
     },
     {
-        id: 1,
+        id: 3,
         text: `Contact`,
         link: `/contact`,
     },
