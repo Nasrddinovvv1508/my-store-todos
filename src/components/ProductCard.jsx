@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
 
 function ProductCard({ product }) {
-    let { id, brand, availabilityStatus, description, category, thumbnail, price, title } = product
+    let { id, description, category, thumbnail, price, title } = product
 
     return (
-        <>
-            <Link className="card bg-base-100 shadow-xl">
-                <figure><img style={{width: "100%", height: "100%", overflow: "auto" }} src={thumbnail} alt="img" /></figure>
+        <li>
+            <Link to={`/product/${id}`} className="card bg-base-100 shadow-xl">
+                <figure><img style={{ width: "100%", height: "100%", overflow: "auto" }} src={thumbnail} alt="img" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-2xl mb-1">
                         {title}
@@ -19,7 +19,7 @@ function ProductCard({ product }) {
                     </div>
                 </div>
             </Link>
-        </>
+        </li>
     )
 }
 

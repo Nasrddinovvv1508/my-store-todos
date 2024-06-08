@@ -6,7 +6,6 @@ import ProductList from '../components/ProductList';
 
 function Home() {
   let { data, isPending, error } = useFetch('https://dummyjson.com/products');
-  console.log(data);
 
   return (
     <div>
