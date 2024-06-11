@@ -23,8 +23,10 @@ function GlobalContextProvider({ children }) {
         total: 0,
     })
 
+    let [changeTotal, setChangeTotal] = useState(state.total);
+
     return (
-        <GlobalContext.Provider value={{ ...state }}>
+        <GlobalContext.Provider value={{ ...state, changeTotal, setChangeTotal }}>
             {children}
         </GlobalContext.Provider>
     )

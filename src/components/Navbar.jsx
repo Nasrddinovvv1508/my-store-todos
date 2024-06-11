@@ -18,7 +18,7 @@ function themeFromLocalStorage() {
 import { useGlobalContext } from "../hooks/useGlobalContext";
 
 function Navbar() {
-  let { total } = useGlobalContext();
+  let { changeTotal, setChangeTotal } = useGlobalContext();
 
   let [theme, setTheme] = useState(themeFromLocalStorage());
 
@@ -45,7 +45,7 @@ function Navbar() {
         </div>
         <div className="navbar-end flex gap-10">
           <div className="indicator cursor-pointer">
-            <span className="indicator-item badge badge-md badge-secondary">{total}</span>
+            <span className="indicator-item badge badge-md badge-secondary">{changeTotal}</span>
             <FaCartPlus className="w-7 h-7" />
           </div>
 

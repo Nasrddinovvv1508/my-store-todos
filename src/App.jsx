@@ -25,7 +25,6 @@ import { GlobalContext } from "./context/GlobalContext";
 
 function App() {
   let { user } = useContext(GlobalContext);
-  console.log(user);
 
   let routes = createBrowserRouter([
     {
