@@ -1,9 +1,9 @@
 // icons 
 import { FaRegSun, FaRegMoon } from "react-icons/fa";
-
+import { FaCartPlus } from "react-icons/fa6";
 
 // react router dom
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 // compnents
 import NavLinks from "./NavLinks";
@@ -14,11 +14,11 @@ function themeFromLocalStorage() {
   return localStorage.getItem(`theme`) || `winter`;
 }
 
-import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
+// hooks
+import { useGlobalContext } from "../hooks/useGlobalContext";
 
 function Navbar() {
-  let {color, setColor} = useContext(GlobalContext);
+  let { total } = useGlobalContext();
 
   let [theme, setTheme] = useState(themeFromLocalStorage());
 
@@ -33,7 +33,7 @@ function Navbar() {
   }, [theme])
 
   return (
-    <div className="mb-6" style={{backgroundColor: color}}>
+    <div className="bg-base-300 mb-6">
       <div className="navbar site-container">
         <div className="navbar-start">
           <Link className="btn btn-secondary font-bold text-2xl" to="/">My Store</Link>
@@ -43,7 +43,12 @@ function Navbar() {
             <NavLinks />
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end flex gap-10">
+          <div className="indicator cursor-pointer">
+            <span className="indicator-item badge badge-md badge-secondary">{total}</span>
+            <FaCartPlus className="w-7 h-7" />
+          </div>
+
           <label className="swap swap-rotate">
 
             {/* this hidden checkbox controls the state */}
