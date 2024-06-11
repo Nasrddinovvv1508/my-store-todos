@@ -1,5 +1,5 @@
 // react router dom
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
 
 // css
 import "./index.css"
@@ -12,12 +12,16 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Product from "./pages/Product"
+import ProtectedRoutes from "./components/ProtectedRoutes"
+import Login from "./pages/Login"
 
 function App() {
   let routes = createBrowserRouter([
     {
       path: '/',
-      element: <MainLayout />,
+      element: (
+          <MainLayout />
+      ),
       children: [
         {
           index: true,

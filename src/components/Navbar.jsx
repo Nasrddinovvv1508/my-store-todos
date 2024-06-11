@@ -14,7 +14,12 @@ function themeFromLocalStorage() {
   return localStorage.getItem(`theme`) || `winter`;
 }
 
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
+
 function Navbar() {
+  let {color, setColor} = useContext(GlobalContext);
+
   let [theme, setTheme] = useState(themeFromLocalStorage());
 
   let handleTheme = () => {
@@ -28,7 +33,7 @@ function Navbar() {
   }, [theme])
 
   return (
-    <div className="bg-base-200 mb-6">
+    <div className="mb-6" style={{backgroundColor: color}}>
       <div className="navbar site-container">
         <div className="navbar-start">
           <Link className="btn btn-secondary font-bold text-2xl" to="/">My Store</Link>
