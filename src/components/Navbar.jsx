@@ -103,13 +103,11 @@ function Navbar() {
                 <li>
                   <Link onClick={handleLightTheme} className="font-semibold flex justify-between">
                     <span>Light Mood</span>
-                    <FaCheck />
                   </Link>
                 </li>
                 <li>
                   <Link onClick={handleDarkTheme} className="font-semibold flex justify-between">
                     Dark Mood
-                    <FaCheck />
                   </Link>
                 </li>
               </ul>

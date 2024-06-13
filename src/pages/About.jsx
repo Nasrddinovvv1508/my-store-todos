@@ -13,7 +13,7 @@ function About() {
       </p>
       <div className='mt-16 flex gap-4 flex-col'>
         <div className='flex gap-4'>
-          <div className='w-1/2 h-[400px] bg-slate-200 rounded-3xl p-16'>
+          <div className='w-1/2 h-[400px] bg-base-100 rounded-3xl border-2 p-16'>
             <div className='flex items-center gap-9'>
               <img width={80} src="./src/assets/user1.png" alt="user" />
               <h3 className='text-3xl font-semibold'>Robert Williams</h3>
@@ -31,7 +31,7 @@ function About() {
               <FaTelegram className="cursor-pointer" />
             </div>
           </div>
-          <div className='w-1/2 h-[400px] bg-slate-200 rounded-3xl p-16'>
+          <div className='w-1/2 h-[400px] bg-base-100 rounded-3xl border-2 p-16'>
             <div className='flex items-center gap-9'>
               <img width={80} className="rounded-full" src="./src/assets/user2.png" alt="user" />
               <h3 className='text-3xl font-semibold'>David Garcia</h3>
@@ -51,7 +51,7 @@ function About() {
           </div>
         </div>
         <div className='flex gap-4'>
-          <div className='w-1/2 h-[400px] bg-slate-200 rounded-3xl p-16'>
+          <div className='w-1/2 h-[400px] bg-base-100 rounded-3xl border-2 p-16'>
             <div className='flex items-center gap-9'>
               <img width={80} className="rounded-full" src="./src/assets/user3.png" alt="user" />
               <h3 className='text-3xl font-semibold'>Linda Brown</h3>
@@ -69,7 +69,7 @@ function About() {
               <FaTelegram className="cursor-pointer" />
             </div>
           </div>
-          <div className='w-1/2 h-[400px] bg-slate-200 rounded-3xl p-16'>
+          <div className='w-1/2 h-[400px] bg-base-100 rounded-3xl border-2 p-16'>
             <div className='flex items-center gap-9'>
               <img width={80} className="rounded-full" src="./src/assets/user4.png" alt="user" />
               <h3 className='text-3xl font-semibold'>Elizabeth Jones</h3>
