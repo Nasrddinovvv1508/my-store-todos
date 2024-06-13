@@ -5,7 +5,7 @@ function ProductCard({ product }) {
 
     return (
         <li>
-            <Link to={`/product/${id}`} className="card bg-base-100 shadow-xl">
+            <Link to={`/product/${id}`} className="card bg-base-100 shadow-xl h-[691px]">
                 <figure><img style={{ width: "100%", height: "100%", overflow: "auto" }} src={thumbnail} alt="img" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-2xl mb-1">
