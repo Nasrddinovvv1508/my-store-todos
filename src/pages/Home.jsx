@@ -9,7 +9,7 @@ function Home() {
 
   return (
     <div>
-      {isPending && <div><span className="loading loading-spinner loading-lg"></span></div>}
+        {isPending && <div className='min-h-screen grid place-items-center'><span className="loading loading-spinner loading-lg"></span></div>}
       {data && <ProductList data={data} />}
     </div>
   )

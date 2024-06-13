@@ -1,6 +1,7 @@
 // icons 
 import { FaRegSun, FaRegMoon } from "react-icons/fa";
 import { FaCartPlus } from "react-icons/fa6";
+import { FaCheck } from "react-icons/fa";
 
 // react router dom
 import { Link } from "react-router-dom";
@@ -20,11 +21,13 @@ function themeFromLocalStorage() {
 }
 
 function logOut() {
-  signOut(auth).then(() => {
-    // Sign-out successful.
-  }).catch((error) => {
-    // An error happened.
-  });
+  if (confirm(`Are you Sure?`)) {
+    signOut(auth).then(() => {
+      // Sign Outed
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
 }
 
 function Navbar() {
@@ -33,9 +36,14 @@ function Navbar() {
 
   let [theme, setTheme] = useState(themeFromLocalStorage());
 
-  let handleTheme = () => {
-    let newTheme = theme == "winter" ? "dracula" : "winter";
+  let handleLightTheme = () => {
+    let newTheme = theme == "dracula" ? "winter" : "winter";
     setTheme(newTheme)
+  }
+
+  let handleDarkTheme = () => {
+    let newTheme = theme == "winter" ? "dracula" : "dracula";
+    setTheme(newTheme);
   }
 
   useEffect(() => {
@@ -69,7 +77,7 @@ function Navbar() {
           </div>
           <div className="navbar-end flex gap-10 items-center">
             <div className="dropdown">
-              <div tabIndex={0} role="button" className="btn m-1 bg-transparent border-0 rounded-3xl">
+              <div tabIndex={0} role="button" className="btn m-1 bg-transparent border-none rounded-3xl">
                 <div className="avatar flex items-center gap-4 -ml-2">
                   <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={photoUrl} alt="user img" />
@@ -92,8 +100,18 @@ function Navbar() {
             <div className="dropdown">
               <div tabIndex={0} role="button" className="btn btn-neutral m-1">Choose Mood</div>
               <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a className="font-semibold">Light Mood</a></li>
-                <li><a className="font-semibold">Dark Mood</a></li>
+                <li>
+                  <Link onClick={handleLightTheme} className="font-semibold flex justify-between">
+                    <span>Light Mood</span>
+                    <FaCheck />
+                  </Link>
+                </li>
+                <li>
+                  <Link onClick={handleDarkTheme} className="font-semibold flex justify-between">
+                    Dark Mood
+                    <FaCheck />
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
