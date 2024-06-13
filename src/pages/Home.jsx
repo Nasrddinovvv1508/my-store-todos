@@ -8,8 +8,8 @@ function Home() {
   let { data, isPending, error } = useFetch('https://dummyjson.com/products');
 
   return (
-    <div>
-        {isPending && <div className='min-h-screen grid place-items-center'><span className="loading loading-spinner loading-lg"></span></div>}
+    <div className='mb-12'>
+      {isPending && <div className='min-h-screen grid place-items-center'><span className="loading loading-spinner loading-lg"></span></div>}
       {data && <ProductList data={data} />}
     </div>
   )
