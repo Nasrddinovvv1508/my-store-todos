@@ -1,7 +1,13 @@
-function Register() {
+// hooks
+import useLogin from "../hooks/useLogin"
+
+function Login() {
+  let { signInWithGoogle } = useLogin()
   return (
-    <div>Register</div>
+    <div >
+      <button onClick={signInWithGoogle} className="btn btn-primary">Google</button>
+    </div>
   )
 }
 
-export default Register
+export default Login

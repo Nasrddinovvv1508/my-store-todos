@@ -44,7 +44,7 @@ function Product() {
   }
 
   document.addEventListener(`DOMContentLoaded`, () => {
-    setChangeTotal(localStorage.getItem('total'));
+    console.log(localStorage.getItem(`total`));
   })
 
   return (

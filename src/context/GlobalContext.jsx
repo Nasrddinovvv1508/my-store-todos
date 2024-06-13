@@ -18,7 +18,7 @@ function GlobalContextProvider({ children }) {
     }
 
     let [state, dispatch] = useReducer(changeState, {
-        user: true,
+        user: null,
         products: [],
         total: 0,
     })
@@ -26,7 +26,7 @@ function GlobalContextProvider({ children }) {
     let [changeTotal, setChangeTotal] = useState(state.total);
 
     return (
-        <GlobalContext.Provider value={{ ...state, changeTotal, setChangeTotal }}>
+        <GlobalContext.Provider value={{ ...state, changeTotal, setChangeTotal, dispatch }}>
             {children}
         </GlobalContext.Provider>
     )
