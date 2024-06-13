@@ -20,11 +20,13 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 
 // Global Context
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { GlobalContext } from "./context/GlobalContext";
+import { onAuthStateChanged } from "firebase/auth"
+import { auth } from "./firebase/firebase.config"
 
 function App() {
-  let { user } = useContext(GlobalContext);
+  let { user, dispatch, isAuthChange } = useContext(GlobalContext);
 
   let routes = createBrowserRouter([
     {
@@ -63,7 +65,14 @@ function App() {
     },
   ])
 
-  return <RouterProvider router={routes} />
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      dispatch({ type: `LOG_IN`, payload: user });
+      dispatch({ type: `AUTH_CHANGE` })
+    })
+  }, [])
+
+  return <>{isAuthChange && <RouterProvider router={routes} />} </>
 }
 
 export default App

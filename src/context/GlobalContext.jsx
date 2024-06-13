@@ -12,6 +12,8 @@ function GlobalContextProvider({ children }) {
                 return { ...state, user: payload }
             case `LOG_OUT`:
                 return { ...state, user: null }
+            case `AUTH_CHANGE`:
+                return { ...state, isAuthChange: true }
             default:
                 return state;
         }
@@ -21,6 +23,7 @@ function GlobalContextProvider({ children }) {
         user: null,
         products: [],
         total: 0,
+        isAuthChange: false,
     })
 
     let [changeTotal, setChangeTotal] = useState(state.total);
