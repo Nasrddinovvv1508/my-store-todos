@@ -118,7 +118,7 @@ function Navbar() {
 
           <div className="navbar-end">
             <Link to="/cartlist" className="indicator cursor-pointer mt-1">
-              <div id="animationPing" className="animate-ping -right-2 -top-2 absolute hidden h-[42px] w-[42px] rounded-full bg-sky-400 opacity-75">
+              <div id="animationPing" className="animate-ping -right-3 hidden -top-3 absolute  h-[50px] w-[50px] rounded-full bg-sky-400 opacity-75">
               </div>
               <span className="indicator-item badge badge-md badge-secondary ">{changeTotal}</span>
               <FaCartPlus className="w-7 h-7" />
