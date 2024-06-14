@@ -115,10 +115,10 @@ function Navbar() {
           </div>
 
           <div className="navbar-end">
-            <div className="indicator cursor-pointer mt-1">
+            <Link to="/cartlist" className="indicator cursor-pointer mt-1">
               <span className="indicator-item badge badge-md badge-secondary">{changeTotal}</span>
               <FaCartPlus className="w-7 h-7" />
-            </div>
+            </Link>
           </div>
         </div>
       </div>

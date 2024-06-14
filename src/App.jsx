@@ -15,9 +15,9 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Product from "./pages/Product"
-// import ProtectedRoutes from "./components/ProtectedRoutes"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import CartList from "./pages/CartList"
 
 // Global Context
 import { useContext, useEffect } from "react"
@@ -48,6 +48,10 @@ function App() {
         {
           path: '/contact',
           element: <Contact />
+        },
+        {
+          path: `/cartlist`,
+          element: <CartList /> ,
         },
         {
           path: '/product/:id',

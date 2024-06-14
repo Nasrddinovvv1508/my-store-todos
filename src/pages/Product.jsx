@@ -49,7 +49,7 @@ function Product() {
 
   return (
     <div className="mt-20">
-      <div>{isPending && <div className="load"><span className="loading loading-spinner loading-lg"></span></div>}</div>
+      <div>{isPending && <div className="min-h-screen grid place-items-center"><span className="loading loading-spinner loading-lg"></span></div>}</div>
       <div className="flex justify-between items-center gap-20 mb-24">
         <img className="w-1/2 border" src={data && data.thumbnail} alt="img" />
         <div className="flex flex-col">
