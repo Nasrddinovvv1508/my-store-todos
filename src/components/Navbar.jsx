@@ -103,14 +103,14 @@ function Navbar() {
               <div tabIndex={0} role="button" className="btn btn-neutral m-1">Choose Mood</div>
               <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
-                  <Link onClick={handleLightTheme} className="font-semibold flex justify-between">
+                  <button onClick={handleLightTheme} className="font-semibold flex justify-between">
                     <span>Light Mood</span>
-                  </Link>
+                  </button>
                 </li>
                 <li>
-                  <Link onClick={handleDarkTheme} className="font-semibold flex justify-between">
+                  <button onClick={handleDarkTheme} className="font-semibold flex justify-between">
                     Dark Mood
-                  </Link>
+                  </button>
                 </li>
               </ul>
             </div>
