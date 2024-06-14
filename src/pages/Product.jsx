@@ -2,13 +2,19 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { useGlobalContext } from "../hooks/useGlobalContext";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // icons
 import { FaCaretDown } from "react-icons/fa";
 
+// animation
+// import { animationPing } from '../components/Navbar';
+// console.log(animationPing);
+
 function Product() {
   let { changeTotal, setChangeTotal } = useGlobalContext();
+  let [addingAnimation, setAddingAnimation] = useState(changeTotal)
+  console.log(addingAnimation);
 
   let { id } = useParams();
   let { data, isPending, error } = useFetch(`https://dummyjson.com/products/${id}`)
@@ -34,9 +40,18 @@ function Product() {
     }
   }
 
+  let animationPing = document.getElementById(`animationPing`)
+
   let varToral;
   let handleAdd = () => {
     varToral = changeTotal += number;
+    setAddingAnimation(varToral)
+
+    animationPing.classList.remove(`hidden`);
+
+    setTimeout(() => {
+    animationPing.classList.add(`hidden`);
+    }, 5000)
 
     setChangeTotal(varToral);
     mainElementRef.current.textContent = 0;
@@ -46,6 +61,8 @@ function Product() {
   document.addEventListener(`DOMContentLoaded`, () => {
     console.log(localStorage.getItem(`total`));
   })
+
+  // console.log(animationPing);
 
   return (
     <div className="mt-20">

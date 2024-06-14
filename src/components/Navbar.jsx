@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 // compnents
 import NavLinks from "./NavLinks";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // hooks
 import { useGlobalContext } from "../hooks/useGlobalContext";
@@ -30,6 +30,8 @@ function logOut() {
   }
 }
 
+// export let animationPing = useRef(null);
+
 function Navbar() {
   let { changeTotal, setChangeTotal, user } = useGlobalContext();
   let { reloadUserInfo: { displayName, photoUrl } } = user
@@ -49,7 +51,7 @@ function Navbar() {
   useEffect(() => {
     document.documentElement.setAttribute(`data-theme`, theme);
     localStorage.setItem(`theme`, theme);
-  }, [theme])
+  }, [theme]);
 
   return (
     <div className="mb-6">
@@ -116,7 +118,9 @@ function Navbar() {
 
           <div className="navbar-end">
             <Link to="/cartlist" className="indicator cursor-pointer mt-1">
-              <span className="indicator-item badge badge-md badge-secondary">{changeTotal}</span>
+              <div id="animationPing" className="animate-ping -right-2 -top-2 absolute hidden h-[42px] w-[42px] rounded-full bg-sky-400 opacity-75">
+              </div>
+              <span className="indicator-item badge badge-md badge-secondary ">{changeTotal}</span>
               <FaCartPlus className="w-7 h-7" />
             </Link>
           </div>
@@ -126,4 +130,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default Navbar // h-[42px] w-[42px] -right-2 -top-2
