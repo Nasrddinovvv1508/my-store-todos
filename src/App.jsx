@@ -25,6 +25,10 @@ import { GlobalContext } from "./context/GlobalContext";
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "./firebase/firebase.config"
 
+// action
+// import { action as LoginAction } from "./pages/Login"
+import { action as RegisterAction } from "./pages/Register"
+
 function App() {
   let { user, dispatch, isAuthChange } = useContext(GlobalContext);
 
@@ -51,7 +55,7 @@ function App() {
         },
         {
           path: `/cartlist`,
-          element: <CartList /> ,
+          element: <CartList />,
         },
         {
           path: '/product/:id',
@@ -66,6 +70,7 @@ function App() {
     {
       path: `/register`,
       element: user ? <Navigate to="/" /> : <Register />,
+      action: RegisterAction,
     },
   ])
 
