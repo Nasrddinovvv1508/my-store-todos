@@ -4,65 +4,27 @@ import { useFetch } from "../hooks/useFetch";
 import { useGlobalContext } from "../hooks/useGlobalContext";
 import { useEffect, useRef, useState } from "react";
 
-// icons
 import { FaCaretDown } from "react-icons/fa";
 
-// animation
-// import { animationPing } from '../components/Navbar';
-// console.log(animationPing);
-
 function Product() {
-  let { changeTotal, setChangeTotal } = useGlobalContext();
-  let [addingAnimation, setAddingAnimation] = useState(changeTotal)
-  console.log(addingAnimation);
-
+  // hooks
   let { id } = useParams();
   let { data, isPending, error } = useFetch(`https://dummyjson.com/products/${id}`)
-
-  let firstElementRef = useRef(null)
-  let secondElementRef = useRef(null)
-  let mainElementRef = useRef(null)
-
-  let number = 0
+  let [amount, setAmount] = useState(0);
+  let { addProducts } = useGlobalContext()
 
   // functions
-  let handlePlus = () => {
-    if (firstElementRef.current) {
-      mainElementRef.current.textContent = number += 1;
-    }
-  }
-
-  let handleMinus = () => {
-    if (secondElementRef.current) {
-      if (number > 0) {
-        mainElementRef.current.textContent = number -= 1
-      }
-    }
-  }
-
   let animationPing = document.getElementById(`animationPing`)
 
-  let varToral;
   let handleAdd = () => {
-    varToral = changeTotal += number;
-    setAddingAnimation(varToral)
+    addProducts({ ...data, amount });
 
+    setAmount(0);
     animationPing.classList.remove(`hidden`);
-
     setTimeout(() => {
-    animationPing.classList.add(`hidden`);
-    }, 5000)
-
-    setChangeTotal(varToral);
-    mainElementRef.current.textContent = 0;
-    localStorage.setItem('total', varToral);
+      animationPing.classList.add(`hidden`);
+    }, 5000);
   }
-
-  document.addEventListener(`DOMContentLoaded`, () => {
-    console.log(localStorage.getItem(`total`));
-  })
-
-  // console.log(animationPing);
 
   return (
     <div className="mt-20">
@@ -71,15 +33,22 @@ function Product() {
         <img className="w-1/2 border" src={data && data.thumbnail} alt="img" />
         <div className="flex flex-col">
           <div className="w-1/2">
-            <h1 className="text-5xl mb-7 font-semibold">{data && data.title}</h1>
-            <p className="opacity-60">
+            <h1 className="text-5xl mb-6 font-semibold">{data && data.title}</h1>
+            <p className="opacity-60 mb-3">
               {data && data.description}
             </p>
+            <div>
+              <span className="rounded-full border-2 p-1 badge badge-secondary font-bold">{data && data.price}$</span>
+            </div>
           </div>
-          <div className="mt-10">
-            <button ref={firstElementRef} onClick={handlePlus} className="btn btn-primary">+</button>
-            <span ref={mainElementRef} className="mx-4">0</span>
-            <button ref={secondElementRef} onClick={handleMinus} className="btn btn-primary">-</button>
+          <div className="mt-8">
+            <button onClick={() => setAmount(amount + 1)} className="btn btn-primary">+</button>
+            <span className="mx-4"> {amount} </span>
+            <button onClick={() => {
+              if (amount > 0) {
+                setAmount(amount - 1)
+              }
+            }} className="btn btn-primary">-</button>
             <br />
             <button onClick={handleAdd} className="mt-2 link text-blue-600">Add to Cart</button>
           </div>

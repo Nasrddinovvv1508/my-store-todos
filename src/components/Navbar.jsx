@@ -30,11 +30,10 @@ function logOut() {
   }
 }
 
-// export let animationPing = useRef(null);
-
 function Navbar() {
-  let { changeTotal, setChangeTotal, user } = useGlobalContext();
-  let { reloadUserInfo: { displayName, photoUrl } } = user
+  let { total, user } = useGlobalContext();
+  console.log(total);
+  let { displayName, photoURL } = user
 
   let [theme, setTheme] = useState(themeFromLocalStorage());
 
@@ -59,18 +58,6 @@ function Navbar() {
         <div className="site-container">
           <div className="navbar-start flex items-center gap-6">
             <Link className="btn btn-secondary font-bold text-2xl" to="/">My Store</Link>
-            {/* <label className="swap swap-rotate"> */}
-
-            {/* this hidden checkbox controls the state */}
-            {/* <input onClick={handleTheme} type="checkbox" checked={theme == `dracula`} readOnly /> */}
-
-            {/* sun icon */}
-            {/* <FaRegSun className="swap-on fill-current w-7 h-7" /> */}
-
-            {/* moon icon */}
-            {/* <FaRegMoon className="swap-off fill-current w-7 h-7" /> */}
-
-            {/* </label> */}
           </div>
           <div className="navbar-center">
             <ul className="menu menu-horizontal gap-2">
@@ -82,7 +69,7 @@ function Navbar() {
               <div tabIndex={0} role="button" className="btn m-1 bg-transparent border-none rounded-3xl">
                 <div className="avatar flex items-center gap-4 -ml-2">
                   <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    <img src={photoUrl} alt="user img" />
+                    <img src={photoURL} alt="user img" />
                   </div>
                   <h3 className="text-lg font-medium">{displayName}</h3>
                 </div>
@@ -117,10 +104,10 @@ function Navbar() {
           </div>
 
           <div className="navbar-end">
-            <Link to="/cartlist" className="indicator cursor-pointer mt-1">
+            <Link to="/cart" className="indicator cursor-pointer mt-1">
               <div id="animationPing" className="animate-ping -right-3 hidden -top-3 absolute  h-[50px] w-[50px] rounded-full bg-sky-400 opacity-75">
               </div>
-              <span className="indicator-item badge badge-md badge-secondary ">{changeTotal}</span>
+              <span className="indicator-item badge badge-md badge-secondary ">{total}</span>
               <FaCartPlus className="w-7 h-7" />
             </Link>
           </div>
