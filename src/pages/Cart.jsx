@@ -12,8 +12,8 @@ function Cart() {
                     <CartItem key={product.id} product={product} />
                 )
             })}
-            {products.length && <p id="totalPrice" className='text-end text-2xl mr-8'>
-                Total price: {totalPrice}$
+            {products.length > 0 && <p id="totalPrice" className='font-medium text-end text-2xl mr-8'>
+                Total price: <span className="font-bold">{totalPrice.toFixed(2)}$</span>
             </p>
             }
         </ul>
