@@ -1,23 +1,22 @@
+import CartItem from "../components/CartItem"
 import { useGlobalContext } from "../hooks/useGlobalContext"
-import { FaTrash } from "react-icons/fa"
 
 function Cart() {
-    let { total, products, deleteProduct } = useGlobalContext()
+    let { total, products, deleteProduct, totalPrice } = useGlobalContext()
 
     return (
-        <div className="site-container">
+        <ul id="list" className="site-container">
+            {!products.length && <h1 className="no-products">No Product yet...</h1>}
             {products.length > 0 && products.map((product) => {
                 return (
-                    <li key={product.id}>
-                        <h2>{product.title}</h2>
-                        <span>{product.amount}</span>
-                        <button className="border-2" onClick={() => deleteProduct(product.id)}>
-                            <FaTrash />
-                        </button>
-                    </li>
+                    <CartItem key={product.id} product={product} />
                 )
             })}
-        </div>
+            {products.length && <p id="totalPrice" className='text-end text-2xl mr-8'>
+                Total price: {totalPrice}$
+            </p>
+            }
+        </ul>
     )
 }
 

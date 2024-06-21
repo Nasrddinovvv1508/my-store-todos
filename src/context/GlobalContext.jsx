@@ -9,6 +9,7 @@ function stateFromLocalStorage() {
             user: null,
             products: [],
             total: 0,
+            totalPrice: 0,
             isAuthChange: false,
         }
     );
@@ -31,6 +32,9 @@ function GlobalContextProvider({ children }) {
             }
             case `CHANGE_TOTAL`: {
                 return { ...state, total: payload }
+            }
+            case `CHANGE_TOTAL_PRICE`: {
+                return { ...state, totalPrice: payload }
             }
             default:
                 return state;
@@ -56,27 +60,57 @@ function GlobalContextProvider({ children }) {
         } else {
             dispatch({ type: `ADD_PRODUCT`, payload: [...state.products, prod] })
         }
-
     }
 
     // delete product
     let deleteProduct = (id) => {
         let deletedProducts = state.products.filter(
             (product) => product.id !== id
-        ); 
+        );
 
         dispatch({ type: `ADD_PRODUCT`, payload: deletedProducts })
+    }
+
+    // increase and decrease
+    let increaseAmount = (id) => {
+        function toggleItem(state, id) {
+            return produce(state, draft => {
+                const product = draft.products.find(item => item.id === id)
+                product.amount = product.amount + 1
+            })
+        }
+
+        let result = toggleItem(state, id);
+        dispatch({ type: `ADD_PRODUCT`, payload: result.products })
+    }
+
+    let decreaseAmount = (id) => {
+        function toggleItem(state, id) {
+            return produce(state, draft => {
+                const product = draft.products.find(item => item.id === id)
+                product.amount = product.amount - 1
+                if (product.amount <= 1) {
+                    deleteProduct(id)
+                }
+            })
+        }
+
+        let result = toggleItem(state, id);
+        dispatch({ type: `ADD_PRODUCT`, payload: result.products })
     }
 
     // calculate
     function calculateTotal() {
         let counter = 0;
+        let counterPrice = 0
 
         state.products.forEach((item) => {
-            counter += item.amount
+            counter += item.amount;
+            counterPrice += item.price * item.amount;
         });
 
         dispatch({ type: `CHANGE_TOTAL`, payload: counter })
+        dispatch({ type: `CHANGE_TOTAL_PRICE`, payload: counterPrice })
     }
 
     useEffect(() => {
@@ -88,7 +122,7 @@ function GlobalContextProvider({ children }) {
     }, [state])
 
     return (
-        <GlobalContext.Provider value={{ ...state, dispatch, addProducts, deleteProduct }}>
+        <GlobalContext.Provider value={{ ...state, dispatch, addProducts, deleteProduct, increaseAmount, decreaseAmount, }}>
             {children}
         </GlobalContext.Provider>
     )
